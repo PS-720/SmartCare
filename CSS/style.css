@@ -1,0 +1,519 @@
+*,
+::after,
+::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: white;
+	font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+	padding-top: 80px;
+}
+
+/* HEADER OF THE PAGE */
+
+.icons {
+	width: 20px;
+}
+
+header {
+	height: 80px;
+	padding: 0 3.5rem;
+	background-color: white;
+	box-shadow: 0 3px 5px rgb(200, 200, 200);
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.header-left {
+	height: 90%;
+	border-radius: 10px;
+	padding: 5px 0;
+}
+
+.HealthCare {
+	height: 100%;
+	text-decoration: none;
+	color: black;
+	border-radius: 20px;
+	padding: 0 15px;
+	background-color: rgba(249, 255, 253, 0.642);
+	box-shadow: 1px 1px 5px rgb(223, 223, 223);
+	transition: background-color 0.15s;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.2rem;
+}
+
+.HealthCare:hover {
+	background-color: rgb(240, 255, 240);
+}
+
+.HealthCare img {
+	height: 70%;
+	width: auto;
+	background-color: transparent;
+	border-radius: 10px;
+}
+
+.HealthCare p {
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.navbar {
+	height: 100%;
+}
+
+.navlist {
+	height: 100%;
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navlist li {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.navlist-items {
+	padding: 1.5rem 2.5rem;
+	text-decoration: none;
+	font-size: 1.1rem;
+	color: black;
+	border-radius: 20px;
+	font-weight: 500;
+	transition: background-color 0.15s;
+
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.navlist-items:hover {
+	background-color: rgb(240, 255, 240);
+}
+
+.navlist-items img {
+	width: 1.2rem;
+}
+
+.header-right {
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.header-right button {
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 0.92rem;
+	font-weight: 500;
+
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
+}
+
+.header-right button img {
+	width: 18px;
+}
+
+.chat-button {
+	background-color: white;
+	color: black;
+	border: 1px solid rgb(185, 185, 185);
+	transition: background-color 0.15s;
+}
+
+.chat-button:hover {
+	background-color: rgba(237, 237, 237, 0.76);
+}
+
+.signIn-button {
+	background-color: rgb(73, 210, 9);
+	color: black;
+	border: 1px solid rgb(20, 189, 37);
+	transition: background-color 0.15s;
+}
+
+.signIn-button:hover {
+	background-color: rgba(0, 189, 13, 0.947);
+}
+
+.find-doctors {
+	background-color: rgb(239, 247, 253);
+	padding: 40px 0;
+}
+
+.find-doctors h2 {
+	font-size: 4.2rem;
+	padding: 30px 50px 0;
+}
+
+.find-doctors span {
+	color: rgb(66, 191, 8);
+}
+
+.find-doctors p {
+	font-size: 1.5rem;
+	padding: 20px 50px;
+	color: rgb(101, 101, 101);
+}
+
+.search-doctor {
+	padding: 30px;
+	margin: 40px 20px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgb(158, 158, 158);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.input-location {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.search-bar {
+	width: 75%;
+	height: 60px;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: rgb(230, 230, 230);
+	display: inline-block;
+}
+
+.search-bar input {
+	border: none;
+	background-color: transparent;
+	width: 60%;
+	padding: 10px 5px;
+	font-size: 1rem;
+}
+
+.search-bar input:focus {
+	outline: none;
+}
+
+.search-bar img {
+	width: 35px;
+	vertical-align: text-top;
+	padding: 0 9px;
+	cursor: pointer;
+}
+
+.location-bar {
+	display: inline-block;
+	width: 23%;
+	background-color: rgb(230, 230, 230);
+	border-radius: 8px;
+}
+
+.location-bar input {
+	width: 60%;
+	height: 60px;
+	padding: 10px 20px 10px 0;
+	border: none;
+	border-radius: 8px;
+	background-color: transparent;
+	text-align: left;
+	font-size: 1rem;
+}
+
+.location-bar input:focus {
+	outline: none;
+}
+
+.location-bar img {
+	width: 50px;
+	vertical-align: text-bottom;
+	padding: 0 10px 0 20px;
+	cursor: pointer;
+}
+
+.search-now {
+	width: 100%;
+	height: 50px;
+}
+
+.search-now button {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(5, 190, 27);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+.search-now button:hover {
+	background-color: rgb(2, 169, 13);
+}
+
+.current-location {
+	width: 100%;
+	text-align: center;
+}
+
+.current-location img {
+	cursor: pointer;
+	vertical-align: text-bottom;
+}
+
+.current-location a {
+	text-decoration: none;
+	color: green;
+}
+
+.browseBySpecialization {
+	padding: 70px 50px;
+}
+
+.browseBySpecialization h2 {
+	font-size: 3rem;
+	text-align: center;
+	color: black;
+}
+
+.browseBySpecialization > p {
+	text-align: center;
+	font-size: 1.2rem;
+	letter-spacing: 1px;
+	color: gray;
+	padding: 20px 0;
+}
+
+.specializationGrid {
+	padding: 50px 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 25px;
+}
+
+.specializationCategory {
+	border: 1px solid rgb(183, 183, 183);
+	height: 200px;
+	border-radius: 15px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+	color: black;
+	transition: transform 0.3s, box-shadow 0.15s, color 0.15s;
+}
+
+.specializationCategory:hover {
+	transform: scale(1.01);
+	color: rgb(7, 142, 45);
+	box-shadow: 0 5px 10px rgb(134, 134, 134);
+	cursor: pointer;
+}
+
+.specializationCategory img {
+	width: 60px;
+	border-radius: 50%;
+}
+
+.specializationCategory p {
+	font-size: 1.1rem;
+}
+
+.chooseHealthcare {
+	padding: 50px;
+	background: linear-gradient(135deg, rgb(0, 166, 62) 10%, rgb(19, 94, 250));
+	text-align: center;
+	color: white;
+	margin-bottom: 50px;
+}
+
+.chooseHealthcare h2 {
+	padding: 10px;
+	font-size: 2.5rem;
+	text-shadow: 0 0 10px rgba(232, 232, 161, 0.748);
+}
+
+.chooseHealthcare > p {
+	letter-spacing: 1.5px;
+	padding: 10px;
+	text-shadow: 0 0 10px rgba(255, 255, 0, 0.476);
+}
+
+.choosingReasons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	padding: 40px 100px;
+}
+
+.choosingReasons div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	padding: 20px 30px;
+}
+
+.choosingReasons div img {
+	border-radius: 50%;
+	width: 65px;
+	padding: 10px 0;
+}
+
+.choosingReasons div h4 {
+	font-size: 1.2rem;
+}
+
+.choosingReasons div p {
+	font-size: 0.9rem;
+}
+
+.urgentCare {
+	margin: 100px 50px;
+	padding: 80px;
+	border-radius: 15px;
+	background-color: rgb(228, 250, 236);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 35px;
+}
+
+.urgentCare img {
+	width: 80px;
+}
+
+.urgentCare h3 {
+	font-size: 2.2rem;
+}
+
+.urgentCare p {
+	letter-spacing: 1.4px;
+	color: rgb(92, 92, 92);
+}
+
+.urgentCare div button {
+	padding: 15px 30px;
+	border: 1px solid rgb(211, 211, 211);
+	border-radius: 10px;
+	margin: 0 10px;
+	background-color: white;
+	font-weight: bold;
+	transition: background-color 0.15s;
+}
+
+.urgentCare div button:hover {
+	cursor: pointer;
+	background-color: rgba(236, 236, 236, 0.517);
+}
+
+.urgentCare div button:first-child {
+	background-color: rgb(0, 181, 9);
+	color: white;
+	border: none;
+}
+
+.urgentCare div button:first-child:hover {
+	background-color: rgb(51, 160, 0);
+}
+
+footer {
+	background-color: rgb(16, 24, 40);
+	color: white;
+}
+
+.upper-header {
+	padding: 50px;
+	display: grid;
+	grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+	column-gap: 20px;
+
+}
+
+.upper-header div{
+	text-align: center;
+}
+
+.upper-header div img {
+	width: 30px;
+	border-radius: 10px;
+	vertical-align: middle;
+}
+
+.upper-header div h4 {
+	padding-bottom: 20px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	display: inline-block;
+}
+
+.upper-header div ul li {
+	list-style-type: none;
+	padding: 5px 0 5px 70px;
+	text-align: left;
+}
+
+.upper-header div ul li a {
+	color: rgb(160, 160, 160);
+	font-size: 0.9rem;
+	text-decoration: none;
+}
+
+.upper-header div ul li a:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.upper-header div p {
+	color: gray;
+	font-size: 0.9rem;
+	padding: 5px 0;
+}
+
+footer hr {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid rgb(124, 124, 124);
+}
+
+footer > div:last-child {
+	padding: 50px;
+}
+
+footer > div:last-child p {
+	color: rgb(193, 193, 193);
+	font-size: 0.9rem;
+	text-align: center;
+}
