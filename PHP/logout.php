@@ -1,0 +1,16 @@
+<?php
+// ==================================
+// Logout Handler - SmartCare
+// ==================================
+
+session_start();
+session_unset();
+session_destroy();
+
+header('Content-Type: application/json');
+echo json_encode([
+    "success" => true,
+    "message" => "Logged out successfully",
+    "redirect" => "../HTML/logIn.html"
+]);
+?>

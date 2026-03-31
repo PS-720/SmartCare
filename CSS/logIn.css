@@ -170,3 +170,52 @@ body {
 .login-btn:hover {
 	background-color: rgba(0, 160, 11, 0.947);
 }
+
+/* Role Selector Dropdown */
+.select-role {
+	padding: 0.8rem 1.5rem;
+	margin-top: 5px;
+	border: 1px solid rgb(214, 214, 214);
+	border-radius: 12px;
+	background-color: rgb(243, 243, 245);
+	font-size: 1rem;
+	font-family: "Nunito Sans", sans-serif;
+	color: rgb(51, 51, 51);
+	cursor: pointer;
+	transition: all 0.15s ease;
+	appearance: auto;
+}
+
+.select-role:focus {
+	outline: none;
+	border: 1px solid rgb(134, 134, 134);
+	box-shadow: 0 0 0 3px rgb(199, 199, 199);
+}
+
+/* Doctor-specific fields container */
+#doctor-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	padding: 1rem 0;
+	border-top: 1px dashed rgb(214, 214, 214);
+	margin-top: 0.5rem;
+	animation: fadeIn 0.3s ease;
+}
+
+#doctor-fields .form-div {
+	width: 100%;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(-10px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Admin note */
+.admin-note {
+	margin-top: 0.5rem;
+	font-size: 0.8rem;
+	color: rgb(156, 156, 156);
+	font-style: italic;
+}

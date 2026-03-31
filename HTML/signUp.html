@@ -1,61 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/logIn.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../JS/components.js" defer></script>
+    <script src="../JS/auth.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
-  <link rel="stylesheet" href="../CSS/style.css">
-  <link rel="stylesheet" href="../CSS/logIn.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
-    rel="stylesheet" />
-  <script src="../JS/components.js" defer></script>
-</head>
-
-<body>
-  <form action="" class="signupForm">
-    <div class="form-logo">
-      <img src="../Assets/Icons/blue-heart.svg" alt="Logo Image">
-      <p>SmartCare</p>
-    </div>
-
-    <div class="greetings">
-      <h4>Create Account</h4>
-      <p>Join SmartCare Today</p>
-    </div>
-
-    <div class="form-div">
-      <label class="label-element" for="fullName">Full Name</label>
-      <input class="input-element" id="fullName" type="text" placeholder="Piyush Shah" required>
-    </div>
-    <div class="form-div">
-      <label class="label-element" for="email">Email Address</label>
-      <input class="input-element" id="email" type="text" placeholder="abc@email.com" required>
-    </div>
-    <div class="form-div">
-      <label class="label-element" for="number">Phone Number</label>
-      <input class="input-element" id="number" type="text" placeholder="+91-******2029" required>
-    </div>
-    <div class="form-div">
-      <label class="label-element" for="password">Password</label>
-      <input class="input-element" id="password" type="text" placeholder="Create a strong password" required>
-    </div>
-    <div class="form-div">
-      <label class="label-element" for="confirmPassword">Confirm Password</label>
-      <input class="input-element" id="confirmPassword" type="text" placeholder="Confirm your password" required>
-    </div>
-    <div class="form-div rememberForgot">
-      <div style="width: 90%;">
-        <input id="rememberMe" type="checkbox">
-        <label class="label-element" for="rememberMe">I agree to the <a href="">Terms Of Service</a> and <a href="">Privacy Policy</a></label>
+  <body>
+    <form action="" class="signupForm">
+      <div class="form-logo">
+        <img src="../Assets/Icons/blue-heart.svg" alt="Logo Image" />
+        <p>SmartCare</p>
       </div>
-    </div>
-    <button class="login-btn">Sign Up</button>
-    <p>Already have an account? <a class="switch-form" href="../HTML/logIn.html">Log In</a></p>
-  </form>
-</body>
 
+      <div class="greetings">
+        <h4>Create Account</h4>
+        <p>Join SmartCare Today</p>
+      </div>
+
+      <!-- Role Selector -->
+      <div class="form-div">
+        <label class="label-element" for="signup-role">Register As</label>
+        <select
+          class="input-element select-role"
+          name="role"
+          id="signup-role"
+          onchange="toggleDoctorFields()"
+        >
+          <option value="patient">Patient</option>
+          <option value="doctor">Doctor</option>
+        </select>
+      </div>
+
+      <div class="form-div">
+        <label class="label-element" for="fullName">Full Name</label>
+        <input
+          class="input-element"
+          id="fullName"
+          type="text"
+          placeholder="Piyush Shah"
+          required
+        />
+      </div>
+      <div class="form-div">
+        <label class="label-element" for="email">Email Address</label>
+        <input
+          class="input-element"
+          id="email"
+          type="text"
+          placeholder="abc@email.com"
+          required
+        />
+      </div>
+      <div class="form-div">
+        <label class="label-element" for="number">Phone Number</label>
+        <input
+          class="input-element"
+          id="number"
+          type="text"
+          placeholder="+91-******2029"
+          required
+        />
+      </div>
+      <div class="form-div">
+        <label class="label-element" for="password">Password</label>
+        <input
+          class="input-element"
+          id="password"
+          type="password"
+          placeholder="Create a strong password"
+          required
+        />
+      </div>
+      <div class="form-div">
+        <label class="label-element" for="confirmPassword"
+          >Confirm Password</label
+        >
+        <input
+          class="input-element"
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm your password"
+          required
+        />
+      </div>
+
+      <!-- Doctor-Specific Fields (hidden by default) -->
+      <div id="doctor-fields" style="display: none; width: 90%">
+        <div class="form-div">
+          <label class="label-element" for="specialization"
+            >Specialization</label
+          >
+          <select class="input-element select-role" id="specialization">
+            <option value="">-- Select Specialization --</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Orthopedic">Orthopedic</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Psychiatrist">Psychiatrist</option>
+            <option value="Endocrinologist">Endocrinologist</option>
+            <option value="Veterinarian">Veterinarian</option>
+            <option value="General Physician">General Physician</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-div">
+          <label class="label-element" for="qualification">Qualification</label>
+          <input
+            class="input-element"
+            id="qualification"
+            type="text"
+            placeholder="MBBS, MD, etc."
+          />
+        </div>
+        <div class="form-div">
+          <label class="label-element" for="experience"
+            >Experience (years)</label
+          >
+          <input
+            class="input-element"
+            id="experience"
+            type="number"
+            placeholder="5"
+            min="0"
+            max="60"
+          />
+        </div>
+        <div class="form-div">
+          <label class="label-element" for="consultationFee"
+            >Consultation Fee (₹)</label
+          >
+          <input
+            class="input-element"
+            id="consultationFee"
+            type="number"
+            placeholder="500"
+            min="0"
+          />
+        </div>
+      </div>
+
+      <div class="form-div rememberForgot">
+        <div style="width: 90%">
+          <input id="rememberMe" type="checkbox" />
+          <label class="label-element" for="rememberMe"
+            >I agree to the <a href="">Terms Of Service</a> and
+            <a href="">Privacy Policy</a></label
+          >
+        </div>
+      </div>
+      <button class="login-btn">Sign Up</button>
+      <p>
+        Already have an account?
+        <a class="switch-form" href="../HTML/logIn.html">Log In</a>
+      </p>
+      <p class="admin-note">
+        Admin accounts are created by existing admins only.
+      </p>
+    </form>
+
+    <script>
+      // Toggle doctor-specific fields based on role selection
+      function toggleDoctorFields() {
+        const role = document.getElementById("signup-role").value;
+        const doctorFields = document.getElementById("doctor-fields");
+        if (role === "doctor") {
+          doctorFields.style.display = "flex";
+          doctorFields.style.flexDirection = "column";
+          doctorFields.style.gap = "0.8rem";
+        } else {
+          doctorFields.style.display = "none";
+        }
+      }
+    </script>
+  </body>
 </html>
