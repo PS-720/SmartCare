@@ -84,7 +84,7 @@
         </div>
 
         <div class="logout-btn">
-          <button id="logout-button">
+          <button>
             <img
               class="icons"
               src="../Assets/Icons/black-logout.svg"
@@ -185,7 +185,7 @@
                   </div>
 
                   <div class="doc-name">
-                    <h4>Dr. Sarah Johnson</h4>
+                    <h4>Dr. Guru Prasad Painuly</h4>
                     <p>Cardiologist</p>
                   </div>
                 </div>
@@ -195,8 +195,8 @@
                   <p class="app-time">10:00 AM</p>
                 </div>
 
-                <div class="app-status">
-                  <p class="status">Confirmed</p>
+                <div class="app-status-confirmed">
+                  <p class="status-confirmed">Confirmed</p>
                 </div>
               </div>
 
@@ -211,7 +211,7 @@
                   </div>
 
                   <div class="doc-name">
-                    <h4>Dr. Michael Chen</h4>
+                    <h4>Dr. Shamsher Dwivedee</h4>
                     <p>Neurologist</p>
                   </div>
                 </div>
@@ -221,8 +221,8 @@
                   <p class="app-time">02:30 PM</p>
                 </div>
 
-                <div class="app-status">
-                  <p class="status">Confirmed</p>
+                <div class="app-status-confirmed">
+                  <p class="status-confirmed">Confirmed</p>
                 </div>
               </div>
 
@@ -237,8 +237,8 @@
                   </div>
 
                   <div class="doc-name">
-                    <h4>Dr. Emily Rodriguez</h4>
-                    <p>Pediatrician</p>
+                    <h4>Dr. Yashbir Deewan</h4>
+                    <p>Dermatologist</p>
                   </div>
                 </div>
 
@@ -247,8 +247,8 @@
                   <p class="app-time">11:00 AM</p>
                 </div>
 
-                <div class="app-status">
-                  <p class="status">Pending</p>
+                <div class="app-status-pending">
+                  <p class="status-pending">Pending</p>
                 </div>
               </div>
             </div>
@@ -275,36 +275,226 @@
         <div class="dashboard">
           <div class="greetings">
             <h3>Book an Appointment</h3>
-            <p>Find a doctor and schedule your visit</p>
+            <p>Schedule your visit with our healthcare professionals</p>
           </div>
-          <!-- Add your book appointment form/content here -->
-          <p style="color: rgb(107, 114, 128); font-style: italic">
-            Booking form coming soon...
-          </p>
+
+          <form action="" class="book-appointment-form">
+            <div class="form-div">
+              <label class="label-element" for="desc-symptoms"
+                >Describe your symptoms</label
+              >
+              <textarea
+                class="input-element"
+                name="Symptoms"
+                id="desc-symptoms"
+                placeholder="Tell us what you are experiencing(e.g. headache, fever, chest pain...)"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="form-div">
+              <label for="select-doctor" class="label-element"
+                >Select Doctor</label
+              >
+              <select name="Doctor" id="select-doctor" class="input-element">
+                <option value="" selected disabled hidden>
+                  Choose a Doctor
+                </option>
+                <option value="Dr. Guru Prasad Painuly">
+                  Dr. Guru Prasad Painuly
+                </option>
+                <option value="Dr. Shamsher Dwivedee">
+                  Dr. Shamsher Dwivedee
+                </option>
+                <option value="Dr. Yashbir Dewan">Dr. Yashbir Dewan</option>
+              </select>
+            </div>
+            <div class="form-div">
+              <label class="label-element" for="app-date"
+                >Appointment Date</label
+              >
+              <input type="date" id="app-date" class="input-element" />
+            </div>
+            <div class="form-div">
+              <label class="label-element" for="app-time">Preferred Time</label>
+              <select name="Time" id="app-time" class="input-element">
+                <option value="" selected disabled hidden>
+                  Select Time slot
+                </option>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+              </select>
+            </div>
+            <div class="form-div">
+              <label class="label-element" for="add-notes"
+                >Additional Notes (Optional)</label
+              >
+              <textarea
+                class="input-element"
+                name="Symptoms"
+                id="add-notes"
+                placeholder="Any additional information you'd like to share..."
+                rows="3"
+              ></textarea>
+            </div>
+            <button class="book-app-btn">Book Appointment</button>
+          </form>
+          <div class="booking-tips">
+            <div class="tips-icon-text">
+              <img src="../Assets/Icons/bulb.png" alt="Bulb Image" />
+              <p>Booking Tips</p>
+            </div>
+            <ul class="tips-list">
+              <li>Book at least 24 hours in advance for better availability</li>
+              <li>
+                Our AI can help recommend the right specialist based on symptoms
+              </li>
+              <li>
+                You'll receive a confirmation email once your appointment is
+                approved
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <!-- ===== SECTION: My Appointments ===== -->
       <section id="section-my-appointments" class="content-section hidden">
         <div class="dashboard">
-          <div class="my-appointments">
+          <div class="appointments-heading">
             <div class="app-details">
               <h3>My Appointments</h3>
               <p>View and manage all your appointments</p>
             </div>
 
-            <button>
+            <button class="book-appointment-btn">
               <img
+                class="icons"
                 src="../Assets/Icons/white-calendar.svg"
                 alt="Calendar Icon"
               />
               Book New Appointment
             </button>
           </div>
-          <!-- Add your appointments list/content here -->
-          <p style="color: rgb(107, 114, 128); font-style: italic">
-            Appointments list coming soon...
-          </p>
+
+          <div class="stats">
+            <div class="stats-cards">
+              <div
+                class="stats-icon"
+                style="background-color: rgb(219, 252, 231)"
+              >
+                <img
+                  class="icons"
+                  src="../Assets/Icons/green-calendar.svg"
+                  alt="calendar icon"
+                />
+              </div>
+              <div>
+                <p class="stats-title">Approved</p>
+                <p class="stats-numbers">2</p>
+              </div>
+            </div>
+            <div class="stats-cards">
+              <div
+                class="stats-icon"
+                style="background-color: rgb(254, 249, 194)"
+              >
+                <img
+                  class="icons"
+                  src="../Assets/Icons/brown-clock.svg"
+                  alt="clock icon"
+                />
+              </div>
+              <div>
+                <p class="stats-title">Pending</p>
+                <p class="stats-numbers">2</p>
+              </div>
+            </div>
+            <div class="stats-cards">
+              <div
+                class="stats-icon"
+                style="background-color: rgb(255, 226, 226)"
+              >
+                <img
+                  class="icons"
+                  src="../Assets/Icons/red-cross.svg"
+                  alt="heart icon"
+                />
+              </div>
+              <div>
+                <p class="stats-title">Rejected</p>
+                <p class="stats-numbers">1</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-appointment-table">
+            <p>All Appointments</p>
+            <table class="app-table">
+              <tr>
+                <th>Doctor</th>
+                <th>Speciality</th>
+                <th>Date & Time</th>
+                <th>Symptoms</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+              <tr>
+                <td>Dr. Guru Prasad Painuly</td>
+                <td>Cardiologist</td>
+                <td>
+                  <div class="app-day-time">
+                    <p class="app-day">28 April, 2026</p>
+                    <p class="app-time">10:00 AM</p>
+                  </div>
+                </td>
+                <td>Recurring headaches</td>
+                <td>
+                  <div class="app-status-confirmed">
+                    <p class="status-confirmed">Approved</p>
+                  </div>
+                </td>
+                <td><button class="view-detail-btn">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Dr. Shamsher Dwivedee</td>
+                <td>Neurologist</td>
+                <td>
+                  <div class="app-day-time">
+                    <p class="app-day">28 April, 2026</p>
+                    <p class="app-time">10:00 AM</p>
+                  </div>
+                </td>
+                <td>Recurring headaches</td>
+                <td>
+                  <div class="app-status-rejected">
+                    <p class="status-rejected">Rejected</p>
+                  </div>
+                </td>
+                <td><button class="view-detail-btn">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Dr. Yashbir Deewan</td>
+                <td>Dermatologist</td>
+                <td>
+                  <div class="app-day-time">
+                    <p class="app-day">28 April, 2026</p>
+                    <p class="app-time">10:00 AM</p>
+                  </div>
+                </td>
+                <td>Recurring headaches</td>
+                <td>
+                  <div class="app-status-pending">
+                    <p class="status-pending">Pending</p>
+                  </div>
+                </td>
+                <td><button class="view-detail-btn">View Details</button></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </section>
     </div>

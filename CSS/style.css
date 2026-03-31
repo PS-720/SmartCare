@@ -373,10 +373,9 @@ html {
 
 .specializationCategory p {
   font-size: 1.1rem;
-  font-weight: 550;
 }
 
-.chooseSmartCare {
+.chooseHealthcare {
   padding: 50px;
   background: linear-gradient(135deg, rgb(0, 166, 62), rgb(19, 94, 250) 85%);
   text-align: center;
@@ -384,16 +383,14 @@ html {
   margin-bottom: 50px;
 }
 
-.chooseSmartCare h2 {
+.chooseHealthcare h2 {
   padding: 10px;
-  font-size: 3rem;
-  font-weight: 750;
+  font-size: 2.5rem;
   text-shadow: 0 0 10px rgba(232, 232, 161, 0.748);
 }
 
-.chooseSmartCare > p {
+.chooseHealthcare > p {
   letter-spacing: 1.5px;
-  font-size: 1.2rem;
   padding: 10px;
   text-shadow: 0 0 10px rgba(255, 255, 0, 0.476);
 }
@@ -421,12 +418,11 @@ html {
 }
 
 .choosingReasons div h4 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .choosingReasons div p {
   font-size: 0.9rem;
-  font-weight: 500;
 }
 
 .urgentCare {
@@ -451,9 +447,7 @@ html {
 }
 
 .urgentCare p {
-  font-weight: 550;
-  font-size: 1.1rem;
-  /* letter-spacing: 1px; */
+  letter-spacing: 1.4px;
   color: rgb(92, 92, 92);
 }
 
@@ -507,7 +501,7 @@ footer {
 .upper-header div h4 {
   padding-bottom: 20px;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   display: inline-block;
 }
 
