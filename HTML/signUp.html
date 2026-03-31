@@ -7,47 +7,55 @@
   <title>Sign Up</title>
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/logIn.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet" />
   <script src="../JS/components.js" defer></script>
 </head>
 
 <body>
-  <app-header></app-header>
-  <div class="auth-header-text">
-    <h4>Create Account</h4>
-    <p>Join us and take control of your health journey</p>
-  </div>
-
   <form action="" class="signupForm">
-    <div>
-      <label for="fullName">Full Name</label>
-      <input id="fullName" type="text" placeholder="Piyush Shah" required>
+    <div class="form-logo">
+      <img src="../Assets/Icons/blue-heart.svg" alt="Logo Image">
+      <p>SmartCare</p>
     </div>
-    <div>
-      <label for="email">Email Address</label>
-      <input id="email" type="text" placeholder="abc@email.com" required>
+
+    <div class="greetings">
+      <h4>Create Account</h4>
+      <p>Join SmartCare Today</p>
     </div>
-    <div>
-      <label for="number">Phone Number</label>
-      <input id="number" type="text" placeholder="+91-******2029" required>
+
+    <div class="form-div">
+      <label class="label-element" for="fullName">Full Name</label>
+      <input class="input-element" id="fullName" type="text" placeholder="Piyush Shah" required>
     </div>
-    <div>
-      <label for="password">Password</label>
-      <input id="password" type="text" placeholder="Create a strong password" required>
+    <div class="form-div">
+      <label class="label-element" for="email">Email Address</label>
+      <input class="input-element" id="email" type="text" placeholder="abc@email.com" required>
     </div>
-    <div>
-      <label for="confirmPassword">Confirm Password</label>
-      <input id="confirmPassword" type="text" placeholder="Confirm your password" required>
+    <div class="form-div">
+      <label class="label-element" for="number">Phone Number</label>
+      <input class="input-element" id="number" type="text" placeholder="+91-******2029" required>
     </div>
-    <div class="rememberForgot">
+    <div class="form-div">
+      <label class="label-element" for="password">Password</label>
+      <input class="input-element" id="password" type="text" placeholder="Create a strong password" required>
+    </div>
+    <div class="form-div">
+      <label class="label-element" for="confirmPassword">Confirm Password</label>
+      <input class="input-element" id="confirmPassword" type="text" placeholder="Confirm your password" required>
+    </div>
+    <div class="form-div rememberForgot">
       <div style="width: 90%;">
         <input id="rememberMe" type="checkbox">
-        <label for="rememberMe">I agree to the <a href="">Terms Of Service</a> and <a href="">Privacy Policy</a></label>
+        <label class="label-element" for="rememberMe">I agree to the <a href="">Terms Of Service</a> and <a href="">Privacy Policy</a></label>
       </div>
     </div>
-    <button>Sign Up</button>
-    <p>Already have an account? <a href="../HTML/logIn.html">Log In</a></p>
+    <button class="login-btn">Sign Up</button>
+    <p>Already have an account? <a class="switch-form" href="../HTML/logIn.html">Log In</a></p>
   </form>
-  <app-footer></app-footer>
 </body>
 
 </html>

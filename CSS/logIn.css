@@ -14,25 +14,8 @@ body {
 	);
 }
 
-.auth-header-text {
-	margin-top: 100px;
-	border-radius: 20px;
-	text-align: center;
-}
-
-.auth-header-text h4 {
-	padding-top: 25px;
-	font-size: 2.5rem;
-	color: black;
-}
-
-.auth-header-text p {
-	color: rgb(85, 85, 85);
-	font-size: 1.2rem;
-}
-
 .signupForm {
-	width: 450px;
+	width: 500px;
 	padding: 3rem 1.5rem;
 	margin-top: auto;
 	margin: 50px auto;
@@ -48,46 +31,80 @@ body {
 	gap: 1.5rem;
 }
 
-.signupForm div {
+.form-logo {
+	display: flex;
+	gap: 10px;
+}
+
+.form-logo img {
+	width: 50px;
+}
+
+.form-logo p {
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: rgb(21, 93, 252);
+}
+
+.greetings {
+	text-align: center;
+}
+
+.greetings h4 {
+	font-size: 2rem;
+	font-weight: 800;
+	color: black;
+}
+
+.greetings p {
+	color: rgb(85, 85, 85);
+	font-size: 1rem;
+	font-weight: 550;
+	margin-bottom: 2rem;
+}
+
+.form-div {
 	width: 90%;
 	display: flex;
 	flex-direction: column;
 }
 
-.signupForm div input[type="text"] {
-	height: 2rem;
-	padding: 1.5rem 1.5rem;
-	margin-top: 10px;
-	border: none;
-	border-radius: 10px;
-	background-color: rgb(243, 243, 245);
+.label-element {
+	font-size: 1rem;
+	font-weight: 500;
 }
 
-.signupForm input[type="text"]:focus {
+.input-element {
+	padding: 0.8rem 1.5rem;
+	margin-top: 5px;
+	border: 1px solid rgb(214, 214, 214);
+	border-radius: 12px;
+	background-color: rgb(243, 243, 245);
+	transition: all 0.15s ease;
+}
+
+.input-element:focus {
 	outline: none;
-	border: 1px solid rgb(98, 98, 98);
+	border: 1px solid rgb(134, 134, 134);
 	box-shadow: 0 0 0 3px rgb(199, 199, 199);
 }
 
 .rememberForgot {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.rememberForgot {
+	width: 85%;
+	margin-top: 1rem;
 	font-size: 1rem;
-	display: flex;
+	font-weight: 450;
 	flex-direction: row !important;
 	align-items: center;
 	justify-content: space-between;
 }
 
 .rememberForgot div {
-	width: 32%;
 	display: flex;
+	flex: 1;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: start;
+	gap: 5px;
 }
 
 .rememberForgot div input {
@@ -114,42 +131,42 @@ body {
 	text-align: center;
 }
 
-.rememberForgot div a {
-	color: rgb(53, 167, 0);
-}
-
-.rememberForgot div a:hover {
-	color: rgba(36, 105, 40, 0.947);
-}
-
-.signupForm a {
+.rememberForgot a {
+	width: 50%;
+	color: rgb(0, 81, 255);
 	text-decoration: none;
-	color: rgb(0, 92, 0);
+	text-align: right;
+	cursor: pointer;
+}
+
+.rememberForgot a:hover {
+	color: rgb(0, 55, 175);
+}
+
+.switch-form {
+	text-decoration: none;
+	color: rgb(0, 81, 255);
 	transition: letter-spacing 0.15s;
 }
 
-.signupForm a:hover {
-	color: rgb(22, 166, 22);
+.switch-form:hover {
+	color: rgb(0, 55, 175);
 }
 
-.signupForm button {
-	width: 88%;
+.login-btn {
+	width: 95%;
 	height: 50px;
 	padding: 0.7rem 1.2rem;
 	margin-top: 10px;
 	border: none;
 	border-radius: 5px;
-	background-color: rgb(51, 161, 0);
+	background-color: rgb(0, 81, 255);
 	color: white;
 	font-size: 1rem;
 	cursor: pointer;
 	transition: background-color 0.15s;
 }
 
-.signupForm button:hover {
-	background-color: rgba(1, 171, 12, 0.947);
-}
-
-.signupForm p a {
-	cursor: pointer;
+.login-btn:hover {
+	background-color: rgb(0, 55, 175);
 }

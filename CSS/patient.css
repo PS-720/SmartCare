@@ -66,9 +66,17 @@ html {
 	justify-content: start;
 }
 
-#dashboard-anchor {
-	color: rgb(21, 93, 252);
-	background-color: rgb(239, 246, 255);
+.active-menu {
+	color: rgb(21, 93, 252) !important;
+	background-color: rgb(239, 246, 255) !important;
+}
+
+button.menu-item-anchor {
+	width: 100%;
+	border: none;
+	background: none;
+	font-family: inherit;
+	cursor: pointer;
 }
 
 .menu-item-anchor {
@@ -354,4 +362,17 @@ html {
 
 .start-chat-btn {
   color: rgb(0, 166, 62)
+}
+
+/* ===== Section Toggle (hidden / active) ===== */
+.content-section {
+	transition: opacity 0.25s ease;
+}
+
+.content-section.hidden {
+	display: none;
+}
+
+.content-section.active {
+	display: block;
 }
