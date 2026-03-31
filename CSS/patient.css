@@ -380,7 +380,108 @@ button.menu-item-anchor {
 	color: rgb(0, 166, 62);
 }
 
-/* Book-Appointment */
+/* Book Appointment Section */
+#section-book-appointment .greetings {
+	width: 75%;
+	margin: auto;
+}
+
+.book-appointment-form {
+	width: 75%;
+	padding: 2rem 1rem;
+	margin: auto;
+	border: 1px solid rgb(217, 217, 217);
+	border-radius: 1rem;
+	background-color: white;
+	box-shadow: 3px 3px 10px rgb(187, 187, 187);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+}
+
+.form-div {
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+}
+
+.label-element {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.input-element {
+	padding: 0.7rem 1.5rem;
+	margin-top: 5px;
+	font-size: 0.9rem;
+	border: 1px solid rgb(214, 214, 214);
+	border-radius: 10px;
+	background-color: rgb(243, 243, 245);
+	transition: all 0.15s ease;
+}
+
+.input-element:focus {
+	outline: none;
+	border: 1px solid rgb(134, 134, 134);
+	box-shadow: 0 0 0 3px rgb(199, 199, 199);
+}
+
+.book-app-btn {
+	width: 95%;
+	padding: 0.8rem 1.2rem;
+	margin-top: 10px;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(0, 81, 255);
+	color: white;
+	font-size: 0.9rem;
+	font-weight: 550;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+.book-app-btn:hover {
+	background-color: rgb(0, 55, 175);
+}
+
+.booking-tips {
+	width: 75%;
+	margin: auto;
+	padding: 2rem 1rem;
+	background-color: rgb(240, 253, 244);
+	border: 1px solid rgb(185, 248, 207);
+	border-radius: 15px;
+}
+
+.tips-icon-text {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.tips-icon-text img {
+	width: 35px;
+}
+
+.tips-icon-text p {
+	color: rgb(1, 102, 48);
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+.tips-list {
+	margin-left: 0;
+  padding-left: 1.5rem;
+	color: rgb(1, 102, 48);
+	font-size: 0.9rem;
+	font-weight: 450;
+}
+
+/* My Appointment Section */
 .appointments-heading {
 	width: 100%;
 	display: flex;

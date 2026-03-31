@@ -60,7 +60,7 @@
 		</div>
 
 		<!-- ===== SECTION: Dashboard ===== -->
-		<section id="section-dashboard" class="content-section hidden">
+		<section id="section-dashboard" class="content-section active">
 			<div class="dashboard">
 				<div class="greetings">
 					<h3>Welcome Back, Piyush!</h3>
@@ -195,13 +195,62 @@
 		</section>
 
 		<!-- ===== SECTION: Book Appointment ===== -->
-		<section id="section-book-appointment" class="content-section active">
+		<section id="section-book-appointment" class="content-section hidden">
 			<div class="dashboard">
 				<div class="greetings">
 					<h3>Book an Appointment</h3>
 					<p>Schedule your visit with our healthcare professionals</p>
 				</div>
 
+				<form action="" class="book-appointment-form">
+					<div class="form-div">
+						<label class="label-element" for="desc-symptoms">Describe your symptoms</label>
+						<textarea class="input-element" name="Symptoms" id="desc-symptoms"
+							placeholder="Tell us what you are experiencing(e.g. headache, fever, chest pain...)" rows="4"></textarea>
+					</div>
+					<div class="form-div">
+						<label for="select-doctor" class="label-element">Select Doctor</label>
+						<select name="Doctor" id="select-doctor" class="input-element">
+							<option value="" selected disabled hidden>Choose a Doctor</option>
+							<option value="Dr. Guru Prasad Painuly">Dr. Guru Prasad Painuly</option>
+							<option value="Dr. Shamsher Dwivedee">Dr. Shamsher Dwivedee</option>
+							<option value="Dr. Yashbir Dewan">Dr. Yashbir Dewan</option>
+						</select>
+					</div>
+					<div class="form-div">
+						<label class="label-element" for="app-date">Appointment Date</label>
+					<input type="date" id="app-date" class="input-element">
+					</div>
+					<div class="form-div">
+						<label class="label-element" for="app-time">Preferred Time</label>
+					<select name="Time" id="app-time" class="input-element">
+						<option value="" selected disabled hidden>Select Time slot</option>
+						<option value="09:00 AM">09:00 AM</option>
+						<option value="10:00 AM">10:00 AM</option>
+						<option value="11:00 AM">11:00 AM</option>
+						<option value="02:00 PM">02:00 PM</option>
+						<option value="03:00 PM">03:00 PM</option>
+						<option value="04:00 PM">04:00 PM</option>
+					</select>
+					</div>
+					<div class="form-div">
+						<label class="label-element" for="add-notes">Additional Notes (Optional)</label>
+					<textarea class="input-element" name="Symptoms" id="add-notes"
+						placeholder="Any additional information you'd like to share..." rows="3"></textarea>
+					</div>
+					<button class="book-app-btn">Book Appointment</button>
+				</form>
+				<div class="booking-tips">
+					<div class="tips-icon-text">
+						<img src="../Assets/Icons/bulb.png" alt="Bulb Image">
+						<p>Booking Tips</p>
+					</div>
+					<ul class="tips-list">
+						<li>Book at least 24 hours in advance for better availability</li>
+						<li>Our AI can help recommend the right specialist based on symptoms</li>
+						<li>You'll receive a confirmation email once your appointment is approved</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
@@ -254,12 +303,12 @@
 					<p>All Appointments</p>
 					<table class="app-table">
 						<tr>
-						<th>Doctor</th>
-						<th>Speciality</th>
-						<th>Date & Time</th>
-						<th>Symptoms</th>
-						<th>Status</th>
-						<th>Action</th>
+							<th>Doctor</th>
+							<th>Speciality</th>
+							<th>Date & Time</th>
+							<th>Symptoms</th>
+							<th>Status</th>
+							<th>Action</th>
 						</tr>
 						<tr>
 							<td>Piyush</td>
