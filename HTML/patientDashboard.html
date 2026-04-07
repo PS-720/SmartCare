@@ -252,33 +252,36 @@
         </div>
 
         <div class="chat-container">
-          <div class="default-message">
-            <div class="img-container">
-              <img class="icons" src="../Assets/Icons/robot.svg" alt="Robot Icon">
-            </div>
-            <div class="welcome-message">
-              <p class="default-text">Hello! I'm your HealthBridge AI assistant. How can I help you today?</p>
-              <p class="curr-time">10:04</p>
+          <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+              Hello! I'm your SmartCare AI assistant. How can I help you today?
             </div>
           </div>
 
-          <div class="type-message">
-            <div class="message-input">
-              <input type="text" class="text-input" placeholder="Type your message...">
-              <button class="send-btn">
-                <img class="icons" src="../Assets/Icons/paper-plane.svg" alt="Send Button Image">
-              </button>
-            </div>
-            <p class="ai-disclaimer">AI responses are for guidance only. Always consult with a healthcare professional
-              for medical advice.</p>
+          <div class="typing-indicator" style="display:none;">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
           </div>
+
+          <div class="chat-input-area">
+            <input type="text" class="chat-input" placeholder="Describe your symptoms (e.g. chest pain, toothache)...">
+            <button class="send-message-btn">
+              <img class="icons" src="../Assets/Icons/paper-plane.svg" alt="Send">
+            </button>
+          </div>
+          <p class="ai-disclaimer" style="padding: 10px; font-size: 0.8rem; color: #64748b; text-align: center;">
+            AI responses are for guidance only. Always consult with a healthcare professional for medical advice.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="../CSS/chatbot.css">
     <script src="../JS/auth.js"></script>
     <script src="../JS/patient_dashboard.js"></script>
+    <script src="../JS/chatbot.js"></script>
 </body>
 
 </html>

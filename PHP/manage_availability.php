@@ -17,7 +17,21 @@ if (!$availability_id || !$status) {
     exit;
 }
 
-// 1. Update availability status
+// 1. Handle actual deletion
+if ($status === 'deleted') {
+    $delete_query = "DELETE FROM doctor_availability WHERE availability_id = ?";
+    $stmt = mysqli_prepare($conn, $delete_query);
+    mysqli_stmt_bind_param($stmt, "i", $availability_id);
+    if (mysqli_stmt_execute($stmt)) {
+        echo json_encode(["success" => true, "message" => "Availability slot deleted successfully"]);
+    } else {
+        echo json_encode(["success" => false, "message" => "Delete failed: " . mysqli_error($conn)]);
+    }
+    mysqli_close($conn);
+    exit;
+}
+
+// 2. Update availability status (for approval/rejection)
 $is_approved = ($status === 'approved') ? 1 : 0;
 $update_query = "UPDATE doctor_availability SET status = ?, is_approved = ? WHERE availability_id = ?";
 $stmt = mysqli_prepare($conn, $update_query);

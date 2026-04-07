@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS smartcare_db;
 USE smartcare_db;
 
---1. USERS TABLE (Shared for Patient, Doctor, Admin login)
+-- 1. USERS TABLE (Shared for Patient, Doctor, Admin login)
 -- =========================================================
 CREATE TABLE users (
     user_id       INT AUTO_INCREMENT PRIMARY KEY,
@@ -160,6 +160,20 @@ CREATE TABLE favourite_doctors (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON DELETE CASCADE,
     UNIQUE KEY unique_favourite (patient_id, doctor_id)
+) ENGINE=InnoDB;
+
+
+-- 11. CHATBOT LOGS (Persistence for AI Assistant)
+-- =========================================================
+CREATE TABLE chatbot_logs (
+    log_id            INT AUTO_INCREMENT PRIMARY KEY,
+    user_id           INT DEFAULT NULL,           -- NULL for guests on index.html
+    session_id        VARCHAR(100) NOT NULL,      -- To group messages in a session
+    sender            ENUM('user', 'bot') NOT NULL,
+    message           TEXT NOT NULL,
+    detected_intent   VARCHAR(50) DEFAULT NULL,   -- e.g., 'symptom_check', 'greeting'
+    created_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
 

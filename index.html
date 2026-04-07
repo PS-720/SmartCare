@@ -129,7 +129,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="HTML/findDoctors.html">Find Doctors</a></li>
             <li><a href="">My Appointments</a></li>
-            <li><a href="">Chat Assistant</a></li>
+            <li><a href="javascript:void(0)" onclick="document.getElementById('chatbot-fab').click()">Chat Assistant</a></li>
           </ul>
         </div>
         <div>
@@ -159,6 +159,36 @@
       </div>
     </footer>
 
+    <!-- Chatbot FAB & Popup -->
+    <div class="chatbot-fab" id="chatbot-fab" title="Chat with Assistant">
+        <img class="icons" src="Assets/Icons/blue-chatbot.svg" alt="Chat">
+    </div>
+
+    <div class="chatbot-popup" id="chatbot-popup">
+        <div class="chat-header">
+            <h3>AI Health Assistant</h3>
+            <span class="close-chat" id="close-chat">&times;</span>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">
+                Hello! How can I help you today? Describe your symptoms for a specialist recommendation.
+            </div>
+        </div>
+        <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" placeholder="Type your symptoms...">
+            <button class="send-message-btn">
+                <img class="icons" src="Assets/Icons/paper-plane.svg" alt="Send">
+            </button>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="CSS/chatbot.css">
     <script src="JS/include.js"></script>
+    <script src="JS/chatbot.js"></script>
   </body>
 </html>

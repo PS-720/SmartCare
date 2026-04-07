@@ -7,12 +7,162 @@ window.addEventListener("DOMContentLoaded", () => {
   // Initial data fetch
   loadDashboardData();
 
-  // Add Slot Handler
+  // Add Slot Handler (Availability Tab)
   const addSlotBtn = document.querySelector(".btn-add-slot");
   if (addSlotBtn) {
     addSlotBtn.addEventListener("click", handleAddSlot);
   }
+
+  // Quick Save Handler (Dashboard Section)
+  const quickSaveBtn = document.querySelector(".save-btn");
+  if (quickSaveBtn) {
+    quickSaveBtn.addEventListener("click", handleQuickSave);
+  }
+
+  // Profile Edit Modal Listeners
+  const editProfileBtn = document.querySelector(".btn-edit-profile");
+  const modal = document.getElementById("modal-edit-profile");
+  const closeModalBtn = document.querySelector(".btn-close-modal");
+  const cancelEditBtn = document.querySelector(".btn-cancel-edit");
+  const editForm = document.getElementById("form-edit-profile");
+
+  if (editProfileBtn) {
+    editProfileBtn.addEventListener("click", () => {
+      populateEditModal();
+      modal.classList.add("active");
+    });
+  }
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+  }
+
+  if (cancelEditBtn) {
+    cancelEditBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+  }
+
+  if (editForm) {
+    editForm.addEventListener("submit", handleUpdateProfile);
+  }
 });
+
+function populateEditModal() {
+  const name = document.getElementById("prof-full-name")?.textContent.replace("Dr. ", "");
+  const spec = document.getElementById("prof-specialization")?.textContent;
+  const exp = parseInt(document.getElementById("prof-experience-2")?.textContent);
+  const email = document.getElementById("prof-email")?.textContent;
+  const phone = document.getElementById("prof-phone")?.textContent;
+  const qual = document.getElementById("prof-license")?.textContent;
+  const fee = parseInt(document.getElementById("prof-fee")?.textContent.replace("₹", ""));
+  const loc = document.getElementById("prof-location")?.textContent;
+  const bio = document.getElementById("prof-bio")?.textContent;
+  const edu = document.getElementById("prof-education")?.textContent;
+
+  document.getElementById("edit-name").value = name || "";
+  document.getElementById("edit-email").value = email || "";
+  document.getElementById("edit-phone").value = phone || "";
+  document.getElementById("edit-specialization").value = spec || "";
+  document.getElementById("edit-experience").value = exp || 0;
+  document.getElementById("edit-qualification").value = qual || "";
+  document.getElementById("edit-fee").value = fee || 0;
+  document.getElementById("edit-location").value = loc || "";
+  document.getElementById("edit-bio").value = bio || "";
+  document.getElementById("edit-education").value = edu || "";
+}
+
+function handleUpdateProfile(e) {
+  e.preventDefault();
+  const userData = checkAuth("doctor");
+  if (!userData) return;
+
+  const updatedData = {
+    user_id: userData.id,
+    full_name: document.getElementById("edit-name").value,
+    email: document.getElementById("edit-email").value,
+    phone: document.getElementById("edit-phone").value,
+    specialization: document.getElementById("edit-specialization").value,
+    experience_years: document.getElementById("edit-experience").value,
+    qualification: document.getElementById("edit-qualification").value,
+    consultation_fee: document.getElementById("edit-fee").value,
+    location: document.getElementById("edit-location").value,
+    bio: document.getElementById("edit-bio").value,
+    education: document.getElementById("edit-education").value,
+  };
+
+  fetch("../PHP/update_profile.php", {
+    method: "POST",
+    body: JSON.stringify(updatedData),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        alert("Profile updated successfully!");
+        document.getElementById("modal-edit-profile").classList.remove("active");
+        loadDashboardData();
+      } else {
+        alert("Update failed: " + res.message);
+      }
+    })
+    .catch((err) => {
+      console.error("Profile update error:", err);
+      alert("An error occurred while updating profile.");
+    });
+}
+
+function handleQuickSave() {
+  const userData = checkAuth("doctor");
+  if (!userData) return;
+
+  const dayRows = document.querySelectorAll("#section-dashboard .day-row");
+  const startTime = document.getElementById("quick-start-time").value;
+  const endTime = document.getElementById("quick-end-time").value;
+
+  const checkedDays = [];
+  dayRows.forEach((row) => {
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    if (checkbox && checkbox.checked) {
+      checkedDays.push(row.querySelector("span").textContent.trim());
+    }
+  });
+
+  if (checkedDays.length === 0) {
+    alert("Please select at least one working day.");
+    return;
+  }
+
+  // Sequential save to avoid race conditions and handle one-by-one backend logic
+  const savePromises = checkedDays.map((day) => {
+    return fetch("../PHP/save_availability.php", {
+      method: "POST",
+      body: JSON.stringify({
+        user_id: userData.id,
+        day_of_week: day,
+        start_time: startTime,
+        end_time: endTime,
+      }),
+    }).then((res) => res.json());
+  });
+
+  Promise.all(savePromises)
+    .then((results) => {
+      const allSuccess = results.every((r) => r.success);
+      if (allSuccess) {
+        alert("Availability updated for selected days. Some may be pending admin approval.");
+        loadDashboardData();
+      } else {
+        const error = results.find((r) => !r.success);
+        alert("Some updates failed: " + (error ? error.message : "Unknown error"));
+      }
+    })
+    .catch((err) => {
+      console.error("Quick save error:", err);
+      alert("An error occurred while saving availability.");
+    });
+}
 
 function loadDashboardData() {
   // Re-check authentication to get latest user data
@@ -65,6 +215,16 @@ function updateDoctorProfile(profile) {
   if (exp2Ele) exp2Ele.textContent = profile.experience_years + " years";
   if (licEle) licEle.textContent = profile.qualification || "N/A";
   if (feeEle) feeEle.textContent = "₹" + profile.consultation_fee;
+
+  // Professional Info
+  const locEle = document.getElementById("prof-location");
+  const bioEle = document.getElementById("prof-bio");
+  const eduEle = document.getElementById("prof-education");
+
+  if (locEle) locEle.textContent = profile.location || "N/A";
+  if (bioEle) bioEle.textContent = profile.bio || "No biography provided.";
+  if (eduEle) eduEle.textContent = profile.qualification || "Qualification details not available."; 
+  // Note: I'll use qualification for education if specific field missing in schema or just show what we have.
 }
 
 function updateDashboardStats(stats) {
@@ -144,11 +304,11 @@ function updateAvailabilityList(availability) {
             </div>
             <div style="flex:1;">
                 <span class="row-label" style="display:block; font-size:0.7rem; color:#94a3b8; font-weight:700;">Start Time</span>
-                <span class="row-value" style="font-weight:700;">${row.start_time.slice(0, 5)}</span>
+                <span class="row-value" style="font-weight:700;">${formatTo12Hr(row.start_time)}</span>
             </div>
             <div style="flex:1;">
                 <span class="row-label" style="display:block; font-size:0.7rem; color:#94a3b8; font-weight:700;">End Time</span>
-                <span class="row-value" style="font-weight:700;">${row.end_time.slice(0, 5)}</span>
+                <span class="row-value" style="font-weight:700;">${formatTo12Hr(row.end_time)}</span>
             </div>
             <span class="status-badge ${row.status}" style="font-size:0.7rem; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:20px; background:#e2e8f0;">${row.status}</span>
             <button class="btn-trash" onclick="deleteAvailability(${row.availability_id})" style="background:none; border:none; cursor:pointer; margin-left:15px;">
@@ -252,4 +412,14 @@ function showSection(sectionName) {
   if (activeItem) {
     activeItem.classList.add("active");
   }
+}
+
+function formatTo12Hr(timeStr) {
+  if (!timeStr) return "N/A";
+  let [hours, minutes] = timeStr.split(":");
+  hours = parseInt(hours);
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  return `${hours.toString().padStart(2, "0")}:${minutes} ${ampm}`;
 }
