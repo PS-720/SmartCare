@@ -48,18 +48,18 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     // Update existing
-    $update_query = "UPDATE doctor_availability SET start_time = ?, end_time = ?, slot_duration = ?, status = 'pending', is_approved = 0 WHERE doctor_id = ? AND day_of_week = ?";
+    $update_query = "UPDATE doctor_availability SET start_time = ?, end_time = ?, slot_duration = ?, status = 'approved', is_approved = 1 WHERE doctor_id = ? AND day_of_week = ?";
     $stmt = mysqli_prepare($conn, $update_query);
     mysqli_stmt_bind_param($stmt, "ssiis", $start_time, $end_time, $slot_duration, $doctor_id, $day_of_week);
 } else {
     // Insert new
-    $insert_query = "INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration, status, is_approved) VALUES (?, ?, ?, ?, ?, 'pending', 0)";
+    $insert_query = "INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration, status, is_approved) VALUES (?, ?, ?, ?, ?, 'approved', 1)";
     $stmt = mysqli_prepare($conn, $insert_query);
     mysqli_stmt_bind_param($stmt, "isssi", $doctor_id, $day_of_week, $start_time, $end_time, $slot_duration);
 }
 
 if (mysqli_stmt_execute($stmt)) {
-    echo json_encode(["success" => true, "message" => "Availability saved and pending admin approval"]);
+    echo json_encode(["success" => true, "message" => "Availability saved and is now live."]);
 } else {
     echo json_encode(["success" => false, "message" => "Error saving availability: " . mysqli_error($conn)]);
 }
