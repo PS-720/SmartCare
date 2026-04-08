@@ -228,12 +228,20 @@ function updateDoctorProfile(profile) {
 }
 
 function updateDashboardStats(stats) {
-  // Update counts in dashboard section
-  const statCards = document.querySelectorAll(".mini-stats h4");
-  if (statCards.length >= 3) {
-    statCards[0].textContent = stats.today_appointments || 0;
-    statCards[1].textContent = stats.completed || 0;
-    statCards[2].textContent = stats.cancelled || 0;
+  // 1. Update counts in the Main Dashboard Section (.stats-grid)
+  const dashboardStatValues = document.querySelectorAll("#section-dashboard .stat-value");
+  if (dashboardStatValues.length >= 3) {
+    dashboardStatValues[0].textContent = stats.today_appointments || 0;
+    dashboardStatValues[1].textContent = stats.completed_today || 0;
+    dashboardStatValues[2].textContent = stats.total_patients || 0;
+  }
+
+  // 2. Update counts in the My Appointments Section (.mini-stats)
+  const miniStatValues = document.querySelectorAll("#section-appointments .mini-stats h4");
+  if (miniStatValues.length >= 3) {
+    miniStatValues[0].textContent = stats.today_appointments || 0;
+    miniStatValues[1].textContent = stats.completed || 0;
+    miniStatValues[2].textContent = stats.cancelled || 0;
   }
 }
 

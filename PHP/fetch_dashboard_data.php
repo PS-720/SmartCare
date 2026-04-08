@@ -2,6 +2,9 @@
 header('Content-Type: application/json');
 require_once 'db_connect.php';
 
+// Set timezone for accurate "Today" metrics
+date_default_timezone_set('Asia/Kolkata');
+
 // Get POST data (user_id and role)
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -45,13 +48,21 @@ if ($role === 'doctor') {
     $today_count_res = mysqli_query($conn, "SELECT COUNT(*) as count FROM appointments WHERE doctor_id = $doctor_id AND appointment_date = '$today' AND status = 'confirmed'");
     $stats['today_appointments'] = mysqli_fetch_assoc($today_count_res)['count'];
 
-    // Completed count
+    // Completed count (Total)
     $completed_res = mysqli_query($conn, "SELECT COUNT(*) as count FROM appointments WHERE doctor_id = $doctor_id AND status = 'completed'");
     $stats['completed'] = mysqli_fetch_assoc($completed_res)['count'];
+
+    // Completed Today (Marked as completed on current date)
+    $completed_today_res = mysqli_query($conn, "SELECT COUNT(*) as count FROM appointments WHERE doctor_id = $doctor_id AND status = 'completed' AND DATE(updated_at) = '$today'");
+    $stats['completed_today'] = mysqli_fetch_assoc($completed_today_res)['count'];
 
     // Cancelled count
     $cancelled_res = mysqli_query($conn, "SELECT COUNT(*) as count FROM appointments WHERE doctor_id = $doctor_id AND status = 'cancelled'");
     $stats['cancelled'] = mysqli_fetch_assoc($cancelled_res)['count'];
+
+    // Total Patients (Distinct)
+    $patients_count_res = mysqli_query($conn, "SELECT COUNT(DISTINCT patient_id) as count FROM appointments WHERE doctor_id = $doctor_id");
+    $stats['total_patients'] = mysqli_fetch_assoc($patients_count_res)['count'];
 
     // 3. Fetch Availability
     $avail_query = "SELECT * FROM doctor_availability WHERE doctor_id = ?";
